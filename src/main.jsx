@@ -25,6 +25,7 @@ createRoot(document.getElementById('root')).render(
     {/* <DemoChangeColor />  */}
     {/* <DemoTinder /> */}
     {/* <DemoStyle /> */}
-    <DemoProps />
+    {/* <DemoProps /> */}
+    <BT_ProductList />
   </> 
 )
