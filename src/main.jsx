@@ -13,6 +13,7 @@ import DemoChangeColor from './RenderStatement/DemoChangeColor'
 import DemoTinder from './RenderStatement/DemoTinder'
 import DemoStyle from './StyleComponent/DemoStyle'
 import DemoProps from './Props/DemoProps'
+import BT_StateProps from './Props/BT_Stettepeag/BT_SeteProps'
 
 createRoot(document.getElementById('root')).render(
   <>
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')).render(
     {/* <DemoTinder /> */}
     {/* <DemoStyle /> */}
     {/* <DemoProps /> */}
-    <BT_ProductList />
+    {/* <BT_ProductList /> */}
+    <BT_StateProps />
   </> 
 )
