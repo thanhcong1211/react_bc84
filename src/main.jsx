@@ -16,43 +16,62 @@ import DemoProps from "./Props/DemoProps";
 import BT_StateProps from "./Props/BT_Stettepeag/BT_SeteProps";
 import DemoFromLogin from "./From/DemoFromLogin";
 import DemoFormik from "./From/DemoFormik";
-import { BrowserRouter, Route, Routes , Outlet} from "react-router-dom";
+import { BrowserRouter, Route, Routes , Outlet } from "react-router-dom";
 import HomeIndex from "./Page/Home";
 import Login from "./Page/Login";
 import HomeTemplate from "./Templete/HomeTemplete";
 import Register from "./Page/Register";
+import AntdDemo from "./Page/AntdDemo/AntdDemo";
+import DemoUseNavigate from "./Page/ReactRouterDom/DemoUseNavigate";
+import ForGotPass from "./Page/ReactRouterDom/ForGotPass";
+//setup redux
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import ChangeNumberRedux from "./Page/ReduxDemo/ChangeNumberRedux";
+
+
+
 
 createRoot(document.getElementById("root")).render(
+  
   <>
-    {/* <BT1_HomeComponent /> */}
-    {/* <DataBinding /> */}
-    {/* <HandleEvent /> */}
-    {/* < RenderComposition /> */}
-    {/* <DemoState /> */}
-    {/* <DemoChangeNumber /> */}
-    {/* <DemoChangeColor />  */}
-    {/* <DemoTinder /> */}
-    {/* <DemoStyle /> */}
-    {/* <DemoProps /> */}
-    {/* <BT_ProductList /> */}
-    {/* <BT_StateProps /> */}
-    {/* <DemoFromLogin /> */}
-    {/* <DemoFormik /> */}
+
     <BrowserRouter>
-       <Routes>
-       <Route path='' element={<HomeTemplate />}>
+    <Provider store={store}>
+      <Routes>
+        <Route path='' element={<HomeTemplate />}>
           <Route index element={<HomeIndex />}></Route>
           <Route path='login' element={<Login />}></Route>
           <Route path='register' element={<Register />}></Route>
+          <Route path='antd' element={<AntdDemo />}></Route>
+          <Route path='redux-change-number' element={<ChangeNumberRedux />}></Route>
         </Route>
+        {/* <Route path='api' element={<div>
+          <header className='bg-dark text-white p-3'>Header</header>
+          <Outlet />
+          <footer className='bg-dark text-white p-3'>footer</footer>
+        </div>}>
+        
+          
+        </Route> */}
 
-        {/* <Route path='api'>
-          <Route path='todolist' element={<ToDoListApi />} />
-          <Route path='productpage' element={<ProductsPage />} />
+        {/* <Route path='react-router-dom' element={<HomeTemplate />}>
+          <Route path='demo-use-navigate' element={<DemoUseNavigate />}></Route>
+          <Route path='for-got-pass' element={<ForGotPass />}></Route>
+          <Route path='use-search-param' element={<DemoUseSearchParam />}></Route>
+          
+        </Route> */}
+        {/* <Route path='demo-use-param'>
+          <Route path=':id' element={
+            <div>
+              <HeaderHome />
+              <DemoUseParam />
+            </div>
+          }></Route>
         </Route> */}
 
       </Routes>
-      
+       </Provider>
     </BrowserRouter>
   </>
 );

@@ -11,19 +11,36 @@ const HeaderHome = () => {
   <div className="collapse navbar-collapse" id="collapsibleNavId">
     <ul className="navbar-nav me-auto mt-2 mt-lg-0">
       <li className="nav-item">
-        <NavLink className="nav-link active" to="/" aria-current="page">Home <span className="visually-hidden">(current)</span></NavLink>
+        <NavLink className={({isActive})=> isActive ? "bg-white text-dark nav-link": "nav-link"} to="/" aria-current="page"  style={({isActive})=> isActive ? {border:'1px solid orange'}:{}} >Home <span className="visually-hidden">(current)</span></NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/login">Login</NavLink>
+        <NavLink 
+        className={({isActive})=> isActive ? "bg-white text-dark nav-link": "nav-link"} 
+        style={({isActive})=> isActive ? {border:'1px solid orange'}: {}} 
+        to="/login" >Login</NavLink>
+      </li>
+       <li className="nav-item">
+        <NavLink 
+        className={({isActive})=> isActive ? "bg-white text-dark nav-link": "nav-link"} 
+        style={({isActive})=> isActive ? {border:'1px solid orange'}: {}} 
+        to="/antd" >antd</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/register">register</NavLink>
+        <NavLink className={({isActive})=> isActive ? "bg-white text-dark nav-link": "nav-link"} to="/register" 
+        style={({isActive})=> isActive ? {border:'1px solid orange'}: {}}     
+        >register</NavLink>
       </li>
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ReactRouterDom</a>
         <div className="dropdown-menu" aria-labelledby="dropdownId">
-          <a className="dropdown-item" href="#">Action 1</a>
-          <a className="dropdown-item" href="#">Action 2</a>
+          <NavLink className="dropdown-item" to="/react-router-dom/demo-use-navigate">Demo use navigate</NavLink>
+          <NavLink className="dropdown-item" to="/react-router-dom/use-search-param">Demo use search param</NavLink>
+        </div>
+      </li>
+            <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Redux</a>
+        <div className="dropdown-menu" aria-labelledby="dropdownId">
+          <NavLink className="dropdown-item" to="/react-router-dom/redux-change-number">Demo change number</NavLink> 
         </div>
       </li>
     </ul>
