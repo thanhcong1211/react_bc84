@@ -1,9 +1,11 @@
 import React from 'react'
 
 const CardComponent = (props) => {
-    let product = props.product;
-    console.log(product);
 
+    //es5
+    // let product = props.product;
+    //es6
+    let {product} = props;
   return (
     <div className='card'>
         <img src={product?.img} alt='...' />

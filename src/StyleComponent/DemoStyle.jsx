@@ -24,8 +24,12 @@ const DemoStyle = () => {
             </p>
             <hr />
             <h3 style={{fontSize:`${fSize}px`}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab illum sit ex eligendi enim tempore doloremque fugit dolores molestiae totam?</h3>
-            <button className='btn btn-success'onClick={()=>setFsize(fSize + 5)}>+</button>
-            <button className='btn btn-primary mx-2'onClick={()=>setFsize(fSize - 5)}>-</button>
+            <button className='btn btn-success' onClick={()=>{
+                setFsize(fSize+1);
+            }}>+</button>
+            <button className='btn btn-primary mx-2' onClick={()=>{
+                setFsize(fSize-1);
+            }}>-</button>
         </div>
     )
 }

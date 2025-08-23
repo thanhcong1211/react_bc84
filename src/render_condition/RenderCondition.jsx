@@ -1,19 +1,17 @@
-import React, { useState } from 'react'
+//rafce
+import React from 'react'
 
+const RenderCondition = () => {
 
-//state: là giá trị thay đổi làm cho giao diện thay đổi 
-//state sẽ được tạo ra bởi hàm useState
-const DemoState = () => {
-    //tham số thứ 1: là giá trị state
-    //tham số thứ 2: hàm setState thay đổi giá trị state và làm giao diện render lại
-    let [isLogin, setLogin]  = useState(false);
-    console.log(isLogin);
+    let isLogin = false;
+
     const renderLogin = () => {
         if(isLogin){
             return <h3>Hello khải</h3>
         }
         return <button className='btn btn-dark' onClick={()=>{
-            setLogin(true);
+            isLogin = true;
+            console.log(isLogin)
         }}>Login</button>
     }
 
@@ -30,8 +28,10 @@ const DemoState = () => {
                 {renderLogin()}
             </div>
         </div>
+
+
     </div>
   )
 }
 
-export default DemoState
+export default RenderCondition

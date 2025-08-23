@@ -4,7 +4,7 @@ const DemoPropsChildren = (props) => {
   return (
     <div className='container'>
         <h3>Props children</h3>
-        {props.childre}
+        {props.children}
     </div>
   )
 }

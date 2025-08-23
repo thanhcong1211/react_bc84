@@ -1,27 +1,28 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-const ChangeNumberRedux = () => {
-    //Lấy dữ liệu từ redux về component
-    const number = useSelector(state => state.numberReducer);
-    const dispatch = useDispatch(); //hàm này dùng để đưa dữ liệu lên redux store
-    return (
-        <div className='container'>
-            <h3>Change number redux</h3>
-            <h3>number : {number}</h3>
-            <button className='btn btn-success' onClick={()=>{
-                const actionOb = {
-                    type:'CHANGE_NUMBER_ACTION',
-                    payload: 1
-                }
-                //Dùng hàm dispatch -> gửi action đi
-                dispatch(actionOb);
-
-
-            }}>+</button>
-            <button className='btn btn-success mx-2'>-</button>
-        </div>
-    )
-}
-
-export default ChangeNumberRedux
+import { configureStore } from '@reduxjs/toolkit';
+import productSlice from "./product";
+import dsGheReducer from './dsGheReducer';
+import ProductReducer from './ProductReducer';
+//Khi bất kì dispatch nào được gọi thì tất cả reducer đều chạy hết
+export const store = configureStore({
+    reducer: {
+        //state sẽ chứa trong store
+        numberReducer: (state = 10, action) => {
+            console.log('numberReducer');
+            // console.log('hàm 1');
+            //action = {type: 'ten_action', payload: data }
+            if (action.type == 'CHANGE_NUMBER_ACTION') {
+                state += action.payload
+            }
+            return state; //imutable {...state} [...state]  ]//hàm không phải 1 giá trị (chạy khi ứng dụng start và mỗi khi state thay đổi)
+        },
+        imgCarReducer: (state = "img",action) => {
+            // console.log('hàm 2');
+            console.log('imgCarReducer');
+            
+            return state
+        },
+        product: productSlice,
+        dsGheReducer: dsGheReducer,
+        productReducer: ProductReducer
+    }
+});
