@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import productSlice from "./product";
 import dsGheReducer from './dsGheReducer';
 import ProductReducer from './ProductReducer';
+import storeReducer from './storeReducer';
 //Khi bất kì dispatch nào được gọi thì tất cả reducer đều chạy hết
 export const store = configureStore({
     reducer: {
@@ -23,6 +24,7 @@ export const store = configureStore({
         },
         product: productSlice,
         dsGheReducer: dsGheReducer,
-        productReducer: ProductReducer
+        productReducer: ProductReducer,
+        storeReducer:storeReducer
     }
 });

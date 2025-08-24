@@ -1,22 +1,43 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllStoreApiThunk } from '../../redux/storeReducer';
+//Tạo reducer -> xây dựng giao diện -> lấy dữ liệu từ reducer về component qua useSelector -> tạo action thunk call api lấy dữ liệu -> dispatch dữ liệu lên reducer -> reducer cập nhật state mới -> component nhận state mới từ redux về
+import { createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
-const StoreManagement = () => {
-    const { arrStore } = useSelector(state => state.storeReducer);
-    const dispatch = useDispatch();
-    const getAllStoreApi = async () => {
-        const actionThunk = getAllStoreApiThunk();
-        dispatch(actionThunk);
-    }
-    console.log(arrStore,'arrStore');
-    useEffect(()=>{
-        getAllStoreApi();
-    },[])
 
-    return (
-        <div>StoreManagement</div>
-    )
+const initialState = {
+    arrStore: []
 }
 
-export default StoreManagement;
+const storeReducer = createSlice({
+  name: 'storeReducer',
+  initialState,
+  reducers: {
+    getAllStoreAction: (state, action) => { 
+        state.arrStore = action.payload;
+    }
+  }
+});
+
+export const {getAllStoreAction} = storeReducer.actions
+
+export default storeReducer.reducer
+
+//action thunk
+//--------------------------------------------------
+export const getAllStoreApiThunk = () => {
+
+    return async (dispatch, getState) => {
+        try {
+            //call api lấy dữ liệu về
+            const res = await axios({
+                url: 'https://apistore.cybersoft.edu.vn/api/Store/getAll',
+                method: 'GET'
+            });
+            //Sau khi có dữ liệu từ api => dispatch lên reducer
+            const action = getAllStoreAction(res.data.content);
+            dispatch(action)
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}

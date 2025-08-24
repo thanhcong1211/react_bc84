@@ -53,9 +53,9 @@ export const getAllProductActionThunk = async (dispatch, getState) => {
 export const getAllProductEditApiThunk = (idProduct) => {
   
   return async (dispatch, getState) => {
+  
     try {
-      const rootReducer = getState();
-      console.log(rootReducer)
+ 
       const res = await axios({
         url: `https://apistore.cybersoft.edu.vn/api/Product/getid?id=${idProduct}`,
         method: 'GET'

@@ -56,6 +56,20 @@ const HeaderHome = () => {
               <NavLink className="dropdown-item" to="/reduxthunkdemo">Redux thunk demo</NavLink>
             </div>
           </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hook tối ưu</a>
+            <div className="dropdown-menu" aria-labelledby="dropdownId">
+              <NavLink className="dropdown-item" to="/demo-usememo">Demo use memo</NavLink>
+              <NavLink className="dropdown-item" to="/demo-usecallback">Demo useref</NavLink>
+              <NavLink className="dropdown-item" to="/demo-useref">Demo useref</NavLink>
+            </div>
+          </li>
+            <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom hook</a>
+            <div className="dropdown-menu" aria-labelledby="dropdownId">
+              <NavLink className="dropdown-item" to="/customhook-fetchdata">Custom hook fetch data</NavLink>
+            </div>
+          </li>
         </ul>
         <div className='d-flex items-center gap-3'>
           <div className='d-flex items-center justify-center'>

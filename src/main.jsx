@@ -25,7 +25,13 @@ import DemoGetApiThunk from './ReduxMiddleware/DemoGetApiThunk';
 import AdminTemplate from './Templates/AdminTemplate';
 import ProductManagement from './Pages/Admin/ProductManagement';
 import ProductEdit from './Pages/Admin/ProductEdit';
-
+import StoreManagement from './Pages/Admin/StoreManagement';
+import DemoUseMemo from './Pages/HookToiUu/DemoUseMemo/DemoUseMemo';
+import DemoUseCallback from './Pages/HookToiUu/DemoUseCallback/DemoUseCallback';
+import DemoUseRef from './Pages/HookToiUu/DemoUseRef/DemoUseRef';
+import DemoCustomHook from './Pages/CustomHook/DemoCustomHook';
+import LoginAuth from './Pages/Auth/LoginAuth';
+import RegisterAuth from './Pages/Auth/RegisterAuth';
 
 createRoot(document.getElementById('root')).render(
   <>
@@ -34,16 +40,21 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path='' element={<HomeTemplate />}>
             <Route index element={<HomeIndex />}></Route>
-            <Route path='login' element={<Login />}></Route>
-            <Route path='register' element={<Register />}></Route>
+           <Route path='login' element={<LoginAuth />}></Route>
+            <Route path='register' element={<RegisterAuth />}></Route>
             <Route path='antd' element={<AntdDemo />}></Route>
             <Route path='redux-change-number' element={<ChangeNumberRedux />}></Route>
             <Route path='redux-products' element={<ReduxProductsPage />}></Route>
             <Route path='redux-shopping-cart' element={<ReduxShoppingCartPage />}></Route>
             <Route path='booking-ticket' element={<BookingTicketPage />}></Route>
             <Route path='reduxthunkdemo' element={<DemoGetApiThunk />}></Route>
+            <Route path='demo-usememo' element={<DemoUseMemo />}></Route>
+            <Route path='demo-usecallback' element={<DemoUseCallback />}></Route>
+            <Route path='demo-useref' element={<DemoUseRef />}></Route>
+            <Route path='customhook-fetchdata' element={<DemoCustomHook />}></Route>
 
-            
+
+
           </Route>
           <Route path='api' element={<div>
             <header className='bg-dark text-white p-3'>Header</header>
@@ -67,16 +78,18 @@ createRoot(document.getElementById('root')).render(
             }></Route>
           </Route>
 
-          <Route path='admin' element={<AdminTemplate/>}>
-            <Route path='product-management' element={<ProductManagement/>}></Route>
-            <Route path='product-edit/:id' element={<ProductEdit/>} >
+          <Route path='admin' element={<AdminTemplate />}>
+            <Route path='product-management' element={<ProductManagement />}></Route>
+            <Route path='product-edit/:id' element={<ProductEdit />} >
+
             </Route>
 
-          
+            <Route path='store-management' element={<StoreManagement />} ></Route>
+
           </Route>
         </Routes>
       </Provider>
-    
+
     </BrowserRouter>
   </>
 )
