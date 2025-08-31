@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 //import css
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+
 import ProductsPage from './api/ProductsPage';
 import ToDoListApi from './api/ToDoListApi';
 import "./css/index.css";
@@ -32,16 +32,24 @@ import DemoUseRef from './Pages/HookToiUu/DemoUseRef/DemoUseRef';
 import DemoCustomHook from './Pages/CustomHook/DemoCustomHook';
 import LoginAuth from './Pages/Auth/LoginAuth';
 import RegisterAuth from './Pages/Auth/RegisterAuth';
+import Profile from './Pages/Auth/Profile';
+//Cấu hình router history
+import { BrowserRouter, Outlet, Route, Routes , unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import {createBrowserHistory} from 'history'
+
+export const history = createBrowserHistory();
 
 createRoot(document.getElementById('root')).render(
   <>
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Provider store={store}>
         <Routes>
           <Route path='' element={<HomeTemplate />}>
             <Route index element={<HomeIndex />}></Route>
-           <Route path='login' element={<LoginAuth />}></Route>
+            <Route path='login' element={<LoginAuth />}></Route>
             <Route path='register' element={<RegisterAuth />}></Route>
+            <Route path='profile' element={<Profile />}></Route>
+            <Route path='forgot-password' element={<div><h2>Forgot Password</h2></div>}></Route>
             <Route path='antd' element={<AntdDemo />}></Route>
             <Route path='redux-change-number' element={<ChangeNumberRedux />}></Route>
             <Route path='redux-products' element={<ReduxProductsPage />}></Route>
@@ -90,7 +98,7 @@ createRoot(document.getElementById('root')).render(
         </Routes>
       </Provider>
 
-    </BrowserRouter>
+    </HistoryRouter>
   </>
 )
 

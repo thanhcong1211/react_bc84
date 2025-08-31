@@ -2,14 +2,13 @@ import { useFormik } from 'formik'
 import React from 'react'
 import axios from 'axios';
 import { httClientStoreApi } from '../../settings/setting';
-
 const RegisterAuth = () => {
    const frmRegister = useFormik({
     initialValues: {
         name:'',
         email:'',
-        gender:'',
         password:'',
+        gender:'',
         phone:''
     },
     onSubmit: async (userRegister) => {

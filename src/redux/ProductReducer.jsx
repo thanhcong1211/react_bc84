@@ -1,6 +1,7 @@
 //rxslice
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
+import { httClientStoreApi } from '../settings/setting';
 
 const initialState = {
   arrProduct: [],
@@ -33,10 +34,8 @@ export const getAllProductActionThunk = async (dispatch, getState) => {
   try {
     const rootReducer = getState();
     console.log(rootReducer)
-    const res = await axios({
-      url: 'https://apistore.cybersoft.edu.vn/api/Product',
-      method: 'GET'
-    });
+    const res = await httClientStoreApi.get(`/Product`);
+    
     //Sau khi có dữ liệu từ api => dispatch lên reducer
     const action = {
       type: 'ProductReducer/getAllProductAction',
@@ -56,10 +55,8 @@ export const getAllProductEditApiThunk = (idProduct) => {
   
     try {
  
-      const res = await axios({
-        url: `https://apistore.cybersoft.edu.vn/api/Product/getid?id=${idProduct}`,
-        method: 'GET'
-      });
+      const res = await httClientStoreApi.get(`/Product/getid?id=${idProduct}`);
+    
       //Sau khi có dữ liệu từ api => dispatch lên reducer
       const action = getProductEditAction(res.data.content);
       //Gửi dữ liệu lên reducer
